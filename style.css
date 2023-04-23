@@ -5,6 +5,16 @@ body{
 #opening{
    background-color:#B5F1CC;
 }
+
+.interface-img{
+   width: 400px;
+   height: 400px;
+}
+
+.homeplant-img{
+   width: 400px;
+   height: 400px;
+}
 /* Navbar */
 .navbar{
    font-family:  'Tilt Neon', cursive;
@@ -35,11 +45,11 @@ h1 {
    font-family:  'Tilt Neon', cursive;
    background-color: #E5FDD1; 
 }
-.testimonial-img{
+/* .testimonial-img{
    width: 10%;
    border-radius: 100%;
    margin: 20px;
-}
+} */
 .carousel-item{
    padding:7% 15%;
 }
@@ -150,8 +160,8 @@ h1 {
    background: #55acee;
  }
 .tweet{
-   padding-top: 650px;
+   padding-top: 1150px;
 }
 .linked-in{
-   padding-top: 650px;
+   padding-top: 1150px;
 }
