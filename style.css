@@ -160,8 +160,13 @@ h1 {
    background: #55acee;
  }
 .tweet{
-   padding-top: 1150px;
+   padding-top: 1500px;
 }
 .linked-in{
-   padding-top: 1150px;
+   padding-top: 1500px;
+}
+.mike{
+   position: relative;
+   padding-top: 5%;
+   padding-bottom: 10%;
 }
