@@ -72,101 +72,40 @@ h1 {
     line-height: 1.5;  
     font-weight: 500;
 }
-.contact-btn{
-   font-family:  'Tilt Neon', cursive;
-   color: #000;
-   font-size: 1 rem;
-   margin: 3%;
-}
-.contact-link{
-   font-family:  'Tilt Neon', cursive;
-   color: #000;
-   font-size: 1 rem;
-   text-decoration: none;
-}
-.end-link{
-   padding: 50px 20px 20px;
-   margin-top:50%;
-   font-size: 1.1rem;
-}
-.end-link:hover{
-   color: #fff;
-}
-
 /* Hovercode */
+.contact-link{
+   text-decoration: none;
+   color: black;
+}
+.contact-btn{
+   font-family:'Tilt Neon', cursive;
+   margin-right: 40px;
+  padding: 25px 30px;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
 
-.s-ul {
-   display: flex;
-   position: absolute;
-   top: 105%;
-   left: 49%;
-   transform: translate(-50%, -50%);
- }
- 
-.s-li{
-   list-style: none;
-  position: relative;
- }
- 
-.s-a{
-   width: 80px;
-   height: 80px;
-   background-color: #fff;
-   text-align: center;
-   line-height: 80px;
-   font-size: 35px;
-   margin: 0 10px;
-   display: block;
-   border-radius: 50%;
-   position: relative;
-   overflow: hidden;
-   border: 3px solid #fff;
-   z-index: 1;
- }
- 
-.s-a, .icon {
-   position: relative;
-   color: #262626;
-   transition: .5s;
-   z-index: 3;
- }
- 
- .s-a:hover .icon {
-   color: #fff;
-   transform: rotateY(360deg);
- }
- 
-.s-a:before {
-   content: "";
-   position: absolute;
-   top: 100%;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: #f00;
-   transition: .5s;
-   z-index: 2;
- }
- 
-.s-a:hover:before {
-   top: 0;
- }
- 
-.s-li:nth-child(2) a:before{
-   background: #3b5999;
- }
- 
-.s-li:nth-child(1) a:before{
-   background: #55acee;
- }
-.tweet{
-   padding-top: 1500px;
+.contact-btn:hover{
+    background:yellowgreen;
+    color: #050801;
+    box-shadow: 0 0 5px #fff,
+                0 0 25px  #fff,
+                0 0 50px  #fff,
+                0 0 200px  #fff;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #fff);
 }
-.linked-in{
-   padding-top: 1500px;
+.mail:hover{
+   background-color:yellowgreen;
 }
-.mike{
-   position: relative;
-   padding-top: 5%;
-   padding-bottom: 10%;
+.Linked:hover{
+   background-color:  #3b5999;
+}
+.Twitter:hover{
+   background-color: #55acee;
 }
