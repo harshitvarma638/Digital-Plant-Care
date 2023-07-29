@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Montserrat:wght@700&family=Ruda:wght@700&family=Shantell+Sans&family=Tilt+Neon&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Watering</title>
+    <style>
+        *{
+            font-family: 'Tilt Neon', cursive;;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-family: sans-serif;
+        }
+
+        .cardWrap {
+            width: 70%;
+            height: max-content;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            row-gap: 100px;
+        }
+
+        .card {
+            width: 250px;
+            height: max-content;
+            padding: 10px;
+            position: relative;
+            border-radius: 5px;
+            padding-top: 60px;
+            box-shadow: 0 5px 10px rgb(0, 0, 0);
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+            
+        }
+        .card:hover {
+            transform: translateY(-5px) translateZ(10px);
+        }
+        .card .img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            margin-bottom: 10px;
+            top: -27%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card .title {
+            font-weight: bolder;
+            font-size: 17px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .card .desc {
+            font-size: 13px;
+            text-align: center;
+            color: rgba(113, 113, 113, 0.895);
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px;
+            background: orange;
+            border: none;
+            color: white;
+            font-family: sans-serif;
+            font-weight: bolder;
+            margin-top: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border: 2px solid orange;
+            color: orange;
+        }
+
+        .bg {
+            width: 100%;
+            height: 100vh;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.72);
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .midSec {
+            width: 60%;
+            height: 55%;
+            display: grid;
+            position: relative;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgb(0 0 0 / 28%);
+            grid-template-columns: 0.4fr 0.6fr;
+        }
+
+        .sec1 {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            flex-direction: column;
+
+        }
+
+        .sec1 .img {
+            height: 100%;
+            border-radius: 10px;
+            width: auto;
+        }
+
+        .sec2 {
+            padding: 10px 20px;
+        }
+
+        .sec2 .title {
+            font-weight: bolder;
+            font-size: 19px;
+            color: black;
+        }
+
+        .st {
+            display: block;
+            font-size: 13px;
+            margin: 5px 0;
+            font-weight: bolder;
+        }
+
+        .sec2 .sub {
+            font-size: 13px;
+            margin: 20px 0;
+            line-height: 140%;
+        }
+
+        .tags {
+            width: 100%;
+            height: auto;
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tags .tag {
+            width: max-content;
+            height: max-content;
+            padding: 5px 10px;
+            border: orange 1.5px solid;
+            color: orange;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .close {
+            width: 55px;
+            height: 55px;
+            border-radius: 10%;
+            background-color: rgb(226, 226, 226);
+            position: absolute;
+            z-index: 11;
+            right: -20px;
+            top: -20px;
+            font-size: 25px;
+            cursor: pointer;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 1154px) {
+            .wrapper {
+                flex-direction: column;
+                height: max-content;
+                padding-bottom: 30px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .cardWrap {
+                grid-template-rows: 1fr;
+                grid-template-columns: auto;
+            }
+            .midSec{
+                grid-template-columns: auto;
+                height: max-content;
+            }
+            .sec1 .img{
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+      <div class="cardWrap">
+            <div class="card">
+                <img src="./img/Rose.jpg" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            <div class="card">
+                <img src="./img/Tulasi.png" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            <div class="card">
+                <img src="./img/aloe.jpg" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            <div class="card">
+                <img src="./img/lavender.jpg" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            <div class="card">
+                <img src="./img/Neem.jpg" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            <div class="card">
+                <img src="./img/tomato.jpg" alt="" class="img">
+                <div class="title"><b>Plants</b></div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro architecto quasi minima. Harum
+                    perferendis recusandae
+                </div>
+                <button class="btn">
+                    View More
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
