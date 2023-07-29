@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Montserrat:wght@700&family=Ruda:wght@700&family=Shantell+Sans&family=Tilt+Neon&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Cards</title>
+    <style>
+        *{
+            background-color:white;
+            font-family: 'Tilt Neon', cursive;
+        }
+        .wrapper
+        {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-family: sans-serif;
+        }
+        .wrapper .card{
+            width: calc((100vw / 3) - 150px);
+            height: max-content;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgb(0,0,0);
+        }
+        .card .img{
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .card .title{
+            font-weight: bolder;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .card .desc{
+            font-size: 15px;
+            color:black;
+        }
+        .card {
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-20px) translateZ(10px);
+        }
+        .btn{
+            width: 100%;
+            height: 45px;
+            background: orange;
+            border: none;
+            color: white;
+            font-family: sans-serif;
+            font-weight: bolder;
+            margin-top: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: transparent;
+            border: 2px solid orange;
+            color: orange;
+        }
+        @media only screen and (max-width: 1154px) {
+            .wrapper{
+                flex-direction: column;
+                height: max-content;
+                padding-bottom: 30px;
+            }
+            .wrapper .card{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <img src="./img/c1.png" alt="" class="img">
+            <div class="title"><b>Gardening Techniques</b></div>
+            <div class="desc">
+               Here We'll Provide The Information About Gardening Techniques for Plants....
+            </div>
+            <a href="/Gardening.html">
+                <button class="btn">
+                    View More
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <img src="./img/c2.png" alt="" class="img">
+            <div class="title"><b>Seasonal Disease Treatment</b></div>
+            <div class="desc">
+                Here We'll Provide The Information About Seasonal Disease Treatment for Plants....
+            </div>
+            <a href="/Diseases.html">
+                <button class="btn">
+                    View More
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <img src="./img/c3.png" alt="" class="img">
+            <div class="title"><b>Watering Information</b></div>
+            <div class="desc">
+                Here We'll Provide The Watering Information using Weather API for Plants....
+            </div>
+            <a href="/Watering.html">
+                <button class="btn">
+                    View More
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
