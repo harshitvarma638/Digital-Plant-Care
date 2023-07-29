@@ -26,8 +26,12 @@ app.post("/", function(req, res) {
         response.on("end", function() {
             const weatherData = JSON.parse(data);
             // console.log(weatherData);
-            
-            const rainValues = weatherData.list.filter(period => period.pop > 0).map(period => period.rain && period.rain["3h"] ? period.rain["3h"] : 0);
+            // Make sure weatherData.list is an array before filtering and mapping
+            const weatherList = Array.isArray(weatherData.list) ? weatherData.list : [];
+
+            const rainValues = weatherList.filter(period => period.pop > 0).map(period => (period.rain && period.rain["3h"]) ? period.rain["3h"] : 0);
+
+
             const averageRain = rainValues.reduce((sum, value) => sum + value, 0) / rainValues.length;
 
 
