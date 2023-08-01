@@ -7,17 +7,28 @@ const app = express();
 
 // Parse request body
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Serve the HTML file on GET request
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/pincode.html");
+    res.sendFile(__dirname + "/Watering.html");
 });
 
 // Handle form submission on POST request
 app.post("/", function(req, res) {
-    const pincode = req.body.Pin;
+    const pincode = req.body.pin;
+    const city = req.body.city;
     const apiKey = process.env.OPENWEATHERMAP_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?zip=${pincode},IN&appid=${apiKey}`;
+    let url;
+    if(pincode === undefined) {
+        url = `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apikey}`;
+    }
+    else if(city === undefined){
+        url = `https://api.openweathermap.org/data/2.5/forecast?zip=${pincode},IN&appid=${apiKey}`;
+    }
+    else{
+        res.send("Please enter either valid city or pincode");
+    }
     https.get(url, function(response) {
         let data = "";
         response.on("data", function(chunk) {
@@ -33,10 +44,11 @@ app.post("/", function(req, res) {
 
 
             const averageRain = rainValues.reduce((sum, value) => sum + value, 0) / rainValues.length;
-
+            console.log(pincode + " " + city);
 
             // Print the average rainfall for the first 12 elements
-            res.send(`Average rainfall for the next 5 days: ${averageRain} mm and ${averageRain} litres per square metre`);
+            // res.send(`Average rainfall for the next 5 days: ${averageRain} mm and ${averageRain} litres per square metre`);
+            res.sendFile(__dirname + "/API-output.html");
         });
     });
 });

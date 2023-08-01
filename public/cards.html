@@ -29,6 +29,19 @@
             border-radius: 5px;
             box-shadow: 0 5px 10px rgb(0,0,0);
         }
+
+        .wrapper {
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            width:100px;
+            transform: translateX(-50%);
+        }
+
         .card .img{
             border-radius: 10px;
             width: 100%;
@@ -83,41 +96,45 @@
 <body>
     <div class="wrapper">
         <div class="card">
-            <img src="./img/c1.png" alt="" class="img">
+            <img src="/img/c1.png" alt="" class="img">
             <div class="title"><b>Gardening Techniques</b></div>
             <div class="desc">
                Here We'll Provide The Information About Gardening Techniques for Plants....
             </div>
-            <a href="/Gardening.html">
+            <a href="/public/Gardening.html">
                 <button class="btn">
                     View More
                 </button>
             </a>
         </div>
         <div class="card">
-            <img src="./img/c2.png" alt="" class="img">
+            <img src="/img/c2.png" alt="" class="img">
             <div class="title"><b>Seasonal Disease Treatment</b></div>
             <div class="desc">
                 Here We'll Provide The Information About Seasonal Disease Treatment for Plants....
             </div>
-            <a href="/Diseases.html">
+            <a href="/public/Diseases.html">
                 <button class="btn">
                     View More
                 </button>
             </a>
         </div>
         <div class="card">
-            <img src="./img/c3.png" alt="" class="img">
+            <img src="/img/c3.png" alt="" class="img">
             <div class="title"><b>Watering Information</b></div>
             <div class="desc">
                 Here We'll Provide The Watering Information using Weather API for Plants....
             </div>
-            <a href="/Watering.html">
+            <a href="/public/Watering.html">
                 <button class="btn">
                     View More
                 </button>
             </a>
         </div>
+        <div class="back-btn">
+            <a href="index.html"><button class="btn btn-orange">Back</button></a>
+        </div>
     </div>
 </body>
+
 </html>

@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plant Selection</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="margin: 0; padding: 0;">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <!-- Plant Selection Card -->
+        <div id="plantSelectionCard" class="card mx-auto" style="max-width: 400px;">
+            <div class="card-body">
+                <h2 class="card-title text-center">Plant Selection</h2>
+                <div class="form-group">
+                    <label for="plantDropdown">Select a Plant:</label>
+                    <select class="form-control" id="plantDropdown">
+                        <option value="tulasi">Tulasi</option>
+                        <option value="aloevera">Aloe vera</option>
+                        <option value="hibiscus">Hibiscus</option>
+                        <option value="jasmine">Jasmine</option>
+                        <option value="turmeric">Turmeric</option>
+                        <option value="ginger">Ginger</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-primary btn-orange" href="/public/cards.html">Back</a>
+                    <button class="btn btn-primary btn-orange" type="button" onclick="proceed()">Proceed</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Card (Initially Hidden) -->
+        <div id="infoCard" class="card col-9 mx-auto my-4" style="display: none;">
+            <div class="card-body">
+                <h5 class="card-title" id="plantName"></h5>
+                <ul id="plantInfo" style="padding-left: 20px; overflow-y: scroll;"></ul>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-orange" onclick="goBack()">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Internal CSS Styling */
+        .container {
+            background-color: white;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            border-color: #ff6600;
+            margin: 0 10px;
+        }
+
+        #plantInfo img {
+        display: block;
+        margin: 0 auto;
+    }
+    </style>
+
+    <script>
+        // Plant information data
+        const plantInfoData = {
+            tulasi: {
+                name: "Tulasi",
+                info: [
+                    "Powdery Mildew and Downy Mildew: These fungal diseases often appear during the cooler and more humid months, such as late summer and early autumn or during the monsoon season, when the humidity levels are high.",
+                    "Fusarium Wilt: This soil-borne fungal disease can occur during any season but may be more common in the warmer months when the soil is consistently moist.",
+                    "Leaf Spot: Leaf spot diseases are more likely to occur during the rainy season or periods of high humidity.",
+                    "Root Rot: Root rot can happen throughout the year, but it becomes more prevalent during the rainy season or when the soil remains excessively wet for prolonged periods.",
+                    "Aphid Infestation: Aphids can be active during various seasons, but their populations may surge during the warmer months when temperatures are favorable for their reproduction."
+                ]
+            },
+            aloevera: {
+                name: "Aloe vera",
+                info: [
+                    "Aloe Rust: This fungal disease can cause yellow-orange spots on leaves.",
+                    "Root Rot: Overwatering can lead to root rot in Aloe vera plants.",
+                    "Aphid Infestation: Aphids can attack Aloe vera and cause damage to the plant.",
+                    "Mealybugs: Mealybugs may infest Aloe vera plants and sap their nutrients.",
+                    "Spider Mites: These pests can cause webbing and damage to Aloe vera leaves.",
+                    "Fungal Diseases: Aloe Vera plants may be susceptible to various fungal diseases like leaf blight or anthracnose, which can thrive in humid and wet conditions during the monsoon or rainy season."
+                ]
+            },
+            hibiscus: {
+                name: "Hibiscus",
+                info: [
+                    "Aphid Infestation: Aphids can attack hibiscus plants and cause damage to the plant.",
+                    "Mealybugs: Mealybugs may infest hibiscus plants and sap their nutrients.",
+                    "Spider Mites: These pests can cause webbing and damage to hibiscus leaves.",
+                    "Powdery Mildew: This fungal disease can cause a white powdery coating on leaves.",
+                    "Leaf Spot: Leaf spot diseases are more likely to occur during the rainy season or periods of high humidity.",
+                    "Root Rot: Root rot can occur during the rainy season or in cooler months when the soil remains excessively wet for prolonged periods. Poor drainage and overwatering are common contributors to root rot.",
+                    "Hibiscus Mosiac Virus: This viral disease can affect hibiscus plants, causing mottling and distortion of the leaves, as well as deformed flowers. It can be more prevalent during the growing season."
+                ]
+            },
+            jasmine: {
+                name: "Jasmine",
+                info: [
+                    "Aphid Infestation:  Aphids can be active during various seasons, but their populations may surge during the warmer months when temperatures are favorable for their reproduction. Aphids can infest Jasmine plants, sucking sap from the leaves and causing damage.",
+                    "Mealybugs: Mealybugs may infest jasmine plants and sap their nutrients.",
+                    "Spider Mites: These pests can cause webbing and damage to jasmine leaves.",
+                    "Powdery Mildew: This fungal disease can cause a white powdery coating on leaves.It can be a problem during the cooler and more humid months, such as late summer and early autumn.",
+                    "Leaf Spot: Leaf spot diseases are more likely to occur during the rainy season or periods of high humidity.These diseases can cause dark spots or lesions on the leaves, leading to defoliation if severe.",
+                    "Root Rot: Root rot can occur during the rainy season or in cooler months when the soil remains excessively wet for prolonged periods. Poor drainage and overwatering are common contributors to root rot.",
+                    "Scale Insects: Scale insects can infest Jasmine plants, particularly in warm and humid conditions, which are commonly found during the rainy season. These pests can cause damage to the plant by sucking sap from the leaves."
+                ]
+            },
+            turmeric: {
+                name: "Turmeric",
+                info: [
+                    "Rhizome Rot: Rhizome rot can be a problem during the rainy season or in cooler months when the soil remains excessively wet for extended periods. Overwatering and poor drainage can contribute to this issue, leading to the decay of the turmeric rhizomes.",
+                    "Leaf Spot: Leaf spot diseases are more likely to occur during the rainy season or periods of high humidity. These diseases can cause dark spots or lesions on the leaves, affecting their overall health.",
+                    "Fungal Diseases: Turmeric plants may be susceptible to various fungal diseases, such as powdery mildew or rhizome blight. These diseases can thrive in humid and wet conditions, making them more prevalent during the monsoon or rainy season",
+                    "Bacterial Diseases: Bacterial diseases can affect turmeric plants, causing symptoms such as yellowing of the leaves, wilting, and stunted growth. These diseases can spread more easily during periods of high humidity.",
+                    "Viral Diseases: Viral diseases can also affect turmeric plants, causing various symptoms such as mosaic patterns on the leaves and yellowing. These diseases may be more common during the growing season when the plant is actively growing"
+                ]
+            },
+            ginger: {
+                name: "Ginger",
+                info: [
+                    "Root Rot: Root rot can be a problem during the rainy season or in cooler months when the soil remains excessively wet for extended periods. Overwatering and poor drainage can contribute to this issue.",
+                    "Fungal Diseases: Ginger plants may be susceptible to various fungal diseases, such as leaf spot or powdery mildew. These diseases can thrive in humid and wet conditions, making them more prevalent during the monsoon or rainy season.",
+                    "Viral Diseases: Viral diseases can affect ginger plants, causing various symptoms such as mottling or yellowing of the leaves. These diseases may be more common during the growing season when the plant is actively growing.",
+                    "Bacterial Diseases: Bacterial diseases can affect ginger plants, leading to wilting, leaf spots, or stunted growth. These diseases can spread more easily during periods of high humidity.",
+                ]
+            },
+            // Add information for other plants similarly...
+        };
+
+        function proceed() {
+            const plantDropdown = document.getElementById('plantDropdown');
+            const selectedPlant = plantDropdown.value;
+            if (selectedPlant in plantInfoData) {
+                const selectedPlantInfo = plantInfoData[selectedPlant];
+                displayPlantInfo(selectedPlantInfo); // Call the displayPlantInfo function with the selected plant's info
+            }
+        }
+
+        function goBack() {
+            document.getElementById('infoCard').style.display = 'none';
+            document.getElementById('plantSelectionCard').style.display = 'block';
+        }
+
+        function displayPlantInfo(plant) {
+            const plantName = document.getElementById('plantName');
+            const plantInfoList = document.getElementById('plantInfo');
+
+            // Clear previous info
+            plantInfoList.innerHTML = '';
+
+            // Set the plant name
+            plantName.textContent = `Seasonal diseases for ${plant.name} plant:`;
+
+            // Add info items with images after each bullet point
+            plant.info.forEach(info => {
+                const [disease, description] = info.split(':'); // Split disease name and description
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span><strong>${disease}:</strong> ${description}</span><br>
+                    <div style="text-align: center;"> <!-- Center the image -->
+                    <img src="${getImageForDisease(disease.trim())}" alt="Image" style="height: 170px;">
+                    </div>
+                `;
+                // listItem.style.listStyleType = 'none'; // Remove default bullet point
+                plantInfoList.appendChild(listItem);
+            });
+
+            // Show the info card
+            document.getElementById('plantSelectionCard').style.display = 'none';
+            document.getElementById('infoCard').style.display = 'block';
+        }
+
+        // Function to get the image URL based on the disease name
+        function getImageForDisease(diseaseName) {
+            // Map disease names to image URLs
+            const diseaseImageMap = {
+                'Powdery Mildew and Downy Mildew': '/plant-img/powdery_mildew.jpg',
+                'Powdery Mildew': '/plant-img/powdery_mildew.jpg',
+                'Fusarium Wilt': '/plant-img/fusarium_wilt.jpg',
+                'Leaf Spot': '/plant-img/leaf_spot.jpg',
+                'Root Rot': '/plant-img/root_rot.jpeg',
+                'Aphid Infestation': '/plant-img/aphid_infestation.jpg',
+                'Aloe Rust': '/plant-img/aloe_rust.jpg',
+                'Mealybugs': '/plant-img/mealy_bugs.jpeg',
+                'Spider Mites': '/plant-img/spider_mites.jpg',
+                'Rhizome Rot': '/plant-img/rhizome_rot.jpeg',
+                'Fungal Diseases': '/plant-img/fungal_virus.jpg',
+                'Bacterial Diseases': '/plant-img/bacterial_diseases.jpg',
+                'Viral Diseases': '/plant-img/viral_disease.jpeg',
+                'Scale Insects': '/plant-img/scale_insects.jpg',
+                'Hibiscus Mosiac Virus': '/plant-img/hibiscus_mosiac.jpg',
+                // Add other diseases and their respective image URLs here
+            };
+
+            // Return the corresponding image URL or a default image URL if not found
+            return diseaseImageMap[diseaseName] || '/plant-img/leaf_spot.jpg';
+        }
+    </script>
+</body>
+
+</html>
+
+
+

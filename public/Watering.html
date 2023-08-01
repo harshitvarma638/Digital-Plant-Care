@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plant Selection</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="margin: 0; padding: 0;">
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card mx-auto" style="max-width: 400px;">
+            
+            <div class="card-body">
+                <h2 class="card-title text-center">Plant Selection</h2>
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label for="plantDropdown">Select a Plant:</label>
+                        <select class="form-control" id="plantDropdown">
+                            <option value="tulasi">Tulasi</option>
+                            <option value="aloe vera">Aloe vera</option>
+                            <option value="hibiscus">Hibiscus</option>
+                            <option value="jasmine">Jasmine</option>
+                            <option value="turmeric">Turmeric</option>
+                            <option value="ginger">Ginger</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincodeOrCityDropdown">Enter Your PIN Code or City:</label>
+                        <select class="form-control" id="pincodeOrCityDropdown">
+                            <option value="pincode">PIN Code</option>
+                            <option value="city">City</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="pincodeGroup">
+                        <label for="pincodeInput">Enter Your PIN Code:</label>
+                        <input type="text" class="form-control" id="pinInput" placeholder="Enter your PIN code" name="pin">
+                    </div>
+                    <div class="form-group" id="cityGroup" style="display: none;">
+                        <label for="cityDropdown">Select Your City:</label>
+                        <input type="text" class="form-control" id="cityInput" placeholder="Enter your City">
+                    </div>
+                    <div class="alert alert-info small mb-3">
+                        PIN CODE gives more accurate results.
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-primary btn-orange" href="/public/cards.html">Back</a>
+                        <button class="btn btn-primary btn-orange" type="submit" onclick="proceed()">Proceed</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Internal CSS Styling */
+        .container {
+            background-color: white;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+            margin: 10px 20px 10px 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px 20px;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            border-color: #ff6600;
+            margin: 0 10px;
+        }
+
+        
+    </style>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function proceed() {
+            const selectedPlant = document.getElementById('plantDropdown').value;
+            const selectedOption = document.getElementById('pincodeOrCityDropdown').value;
+            let pinValue;
+            let cityValue;
+            if (selectedOption === 'pincode') {
+                pinValue = document.getElementById('pincodeInput').value;
+            } else if (selectedOption === 'city') {
+                cityValue = document.getElementById('cityInput').value;
+            }
+    
+            // Add your logic here to do something with the selected plant and location
+            // For example, you can display a message or perform some action based on the inputs.
+            console.log("Selected Plant: ", selectedPlant);
+            console.log("Location: ", pinValue || cityValue);
+    
+            const apiOutputCard = document.querySelector('.APIoutput');
+            const apiOutputTitle = apiOutputCard.querySelector('.card-body');
+            apiOutputTitle.textContent = `API Output Card - Plant: ${selectedPlant}`;
+        }
+
+        function goToCards() {
+            window.location.href = "cards.html";
+        }
+    
+        // Toggle visibility of the PIN Code or City dropdown based on user selection
+        document.getElementById('pincodeOrCityDropdown').addEventListener('change', function() {
+            const selectedOption = this.value;
+            const pincodeGroup = document.getElementById('pincodeGroup');
+            const cityGroup = document.getElementById('cityGroup');
+            const note = document.getElementById('note');
+    
+            if (selectedOption === 'pincode') {
+                pincodeGroup.style.display = 'block';
+                cityGroup.style.display = 'none';
+                note.style.display = 'block';
+            } else if (selectedOption === 'city') {
+                pincodeGroup.style.display = 'none';
+                cityGroup.style.display = 'block';
+                note.style.display = 'none';
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
+
+

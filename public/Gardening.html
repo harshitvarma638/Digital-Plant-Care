@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gardening Techniques</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="margin: 0; padding: 0;">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <!-- Gardening Techniques Card -->
+        <div id="gardeningTechniquesCard" class="card mx-auto" style="max-width: 400px;">
+            <div class="card-body">
+                <h2 class="card-title text-center">Plant Selection</h2>
+                <div class="form-group">
+                    <label for="plantDropdown">Select a Plant:</label>
+                    <select class="form-control" id="plantDropdown">
+                        <option value="tulasi">Tulasi</option>
+                        <option value="aloe_vera">Aloe vera</option>
+                        <option value="hibiscus">Hibiscus</option>
+                        <option value="jasmine">Jasmine</option>
+                        <option value="turmeric">Turmeric</option>
+                        <option value="ginger">Ginger</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-primary btn-orange" href="/public/cards.html">Back</a>
+                    <button class="btn btn-primary btn-orange" type="submit" onclick="proceed()">Proceed</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gardening Techniques Info Card (Initially Hidden) -->
+        <div id="gardeningTechniquesInfoCard" class="card col-9 mx-auto my-4" style="display: none;">
+            <div class="card-body">
+                <h5 class="card-title" id="plantName"></h5>
+                <ul id="gardeningTechniquesList"></ul>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-orange" onclick="goBack()">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Internal CSS Styling */
+        .container {
+            background-color: white;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 40px;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            border-color: #ff6600;
+            margin: 0 10px;
+        }
+
+    </style>
+
+    <script>
+        // Gardening techniques data
+        const gardeningTechniquesData = {
+            tulasi: {
+                name: "Tulasi",
+                techniques: [
+                    "Choosing a Location: Tulsi plants thrive in warm and sunny conditions. Select a spot that receives at least 6-8 hours of sunlight daily. If you live in a hot climate, consider providing some partial shade during the hottest part of the day.",
+                    "Soil Preparation: Tulsi prefers well-draining, fertile soil. Prepare the soil by mixing in organic matter like compost or well-rotted manure to improve soil fertility and structure.",
+                    "Planting Tulsi: You can grow Tulsi from seeds or by propagating from stem cuttings. If using seeds, sow them directly into the soil or start them indoors in seed trays and then transplant once the seedlings are a few inches tall. If using cuttings, take 4-6 inch (10-15 cm) stem cuttings from a healthy plant and place them in water until they develop roots. Then transplant the rooted cuttings into the soil.",
+                    "Water at the Base: Direct the water at the base of the plant, near the root zone. Avoid watering the leaves as wet foliage can lead to fungal issues.",
+                    "Watering: Keep the soil consistently moist but not waterlogged. Tulsi plants require regular watering, especially during dry periods. Avoid letting the soil dry out completely.",
+                    "Mulching: Apply a layer of organic mulch around the Tulsi plant to retain soil moisture and control weeds.",
+                    "Fertilization: Tulsi is not a heavy feeder, but you can fertilize it with a balanced organic fertilizer once a month during the growing season (spring to fall). Avoid excessive use of synthetic fertilizers, as they can harm the plant.",
+                    "Pruning: Regularly pinch off the top of the plant to encourage bushier growth and prevent it from becoming too leggy.",
+                    "Pest and Disease Control: Tulsi is generally resistant to pests and diseases, but occasionally, it may attract aphids or whiteflies. If necessary, use natural or organic insecticides or neem oil to control pests.",
+                    "Harvesting: You can start harvesting Tulsi leaves once the plant is well-established and has grown to a decent size. Harvesting leaves regularly encourages new growth. When harvesting, pluck the leaves gently from the stems, leaving some leaves behind to support the plant's growth.",
+                    "Winter Care: Tulsi is sensitive to cold temperatures and can be damaged by frost. If you live in a region with cold winters, consider growing Tulsi in a pot so you can bring it indoors during the winter months. Alternatively, you can grow it as an annual and replant new seedlings each spring.",
+                    "Companion Planting: Tulsi is believed to have pest-repelling properties. Consider planting it alongside other garden plants to help protect them from pests."
+                ]
+            },
+            aloe_vera: {
+                name: "Aloe Vera",
+                techniques: [
+                    "Choosing a Location: Aloe vera prefers bright, indirect sunlight. If growing indoors, place the plant near a window that receives bright light but avoid direct sunlight, as it can scorch the leaves. If growing outdoors, choose a spot with partial shade to protect the plant from intense sunlight.",
+                    "Soil Preparation: Aloe vera thrives in well-draining soil. Use a cactus or succulent mix or amend regular potting soil with perlite or sand to improve drainage. The soil should be slightly acidic to neutral (pH 6.0 to 7.0).",
+                    "Pot Selection: When growing aloe vera in containers, choose a pot with drainage holes to prevent waterlogging. Aloe vera's roots are shallow, so a wide and shallow pot is more suitable than a deep one.",
+                    "Watering: Aloe vera is a succulent and can store water in its leaves, so it's important not to overwater it. Allow the soil to dry out between waterings, and water only when the top inch of the soil is dry. During hot and dry conditions, you may need to water more frequently, but always avoid waterlogged conditions.",
+                    "Fertilization: Aloe vera is not a heavy feeder. You can apply a diluted, balanced, liquid fertilizer once every 4-6 weeks during the growing season (spring and summer). Avoid fertilizing during the dormant winter months.",
+                    "Pruning: Remove any dry, withered, or damaged leaves regularly to keep the plant tidy and promote new growth. Use clean, sharp scissors or pruning shears to make clean cuts.",
+                    "Repotting: Aloe vera may outgrow its container over time. If you notice the plant becoming root-bound or the soil depleting quickly after watering, consider repotting into a slightly larger container. Repot during the growing season, preferably in spring.",
+                    "Pest and Disease Control: Aloe vera is relatively pest-resistant, but it can occasionally attract mealybugs, aphids, or spider mites. Inspect the plant regularly and address any pest issues promptly. You can use insecticidal soap or neem oil for natural pest control.",
+                    "Winter Care: Aloe vera is not frost-tolerant, so if you live in a colder climate, it's best to keep it indoors during winter. Place the plant near a sunny window and reduce watering during the dormant winter months.",
+                    "Propagation: Aloe vera can be propagated by removing offsets (baby plants) that grow around the base of the main plant. Carefully separate the offsets and plant them in separate pots once they have developed their own root system."
+                ]
+            },
+            hibiscus: {
+                name: "Hibiscus",
+                techniques: [
+                    "Sunlight: Hibiscus loves sunlight and thrives in full sun. Choose a location that receives at least 6 to 8 hours of direct sunlight daily. If you live in a hot climate, consider providing some afternoon shade to protect the plant from scorching.",
+                    "Soil Preparation: Hibiscus prefers well-draining soil that is slightly acidic to neutral (pH 6.0 to 7.0). If your garden soil is heavy or clayey, amend it with organic matter like compost to improve drainage and fertility.",
+                    "Watering: Hibiscus requires regular watering, especially during hot and dry weather. Keep the soil consistently moist, but avoid waterlogging, as this can lead to root rot. Water the plants at the base to prevent wetting the leaves, which can make them susceptible to fungal diseases.",
+                    "Mulching: Apply a layer of organic mulch around the base of the hibiscus plant to help retain soil moisture, suppress weeds, and maintain a more even soil temperature.",
+                    "Fertilization: Hibiscus is a heavy feeder, and regular fertilization is essential for optimal growth and blooming. Use a balanced, water-soluble fertilizer formulated for flowering plants, and apply it every 2-4 weeks during the growing season (spring and summer). Reduce or stop fertilizing during the dormant winter months.",
+                    "Pruning: Prune your hibiscus regularly to encourage bushier growth and more abundant blooms. Remove dead or damaged branches and pinch back the tips of new growth to promote branching. Pruning is best done in early spring.",
+                    "Pest and Disease Control: Keep an eye out for common pests like aphids, spider mites, and whiteflies. Use natural or organic insecticides if necessary. Ensure good airflow around the plant to prevent fungal diseases.",
+                    "Winter Care: In colder climates, hibiscus is often grown as a potted plant and brought indoors during winter. If you have an outdoor hibiscus, protect it from frost by covering it or moving it indoors during cold spells.",
+                    "Support and Training: Some hibiscus varieties, especially the tropical ones, may benefit from staking or support as they grow taller. Tie the main stem to a stake to provide support and maintain an upright shape.",
+                    "Propagation: You can propagate hibiscus through cuttings. Take 6 to 8-inch (15 to 20 cm) stem cuttings from healthy, non-flowering branches. Remove the lower leaves and dip the cut ends in rooting hormone. Plant the cuttings in a well-draining rooting medium and keep them warm and moist until they root.",
+                ]
+            },
+            jasmine: {
+                name: "Jasmine",
+                techniques: [
+                    "Sunlight: Jasmine thrives in full sunlight, so choose a location that receives at least 4-6 hours of direct sunlight daily. However, some jasmine varieties can tolerate partial shade, especially in hot climates.",
+                    "Soil Preparation: Jasmine prefers well-draining soil that is rich in organic matter. Prepare the soil by adding compost or well-rotted manure to improve fertility and structure. The soil pH should be slightly acidic to neutral (pH 6.0 to 7.0).",
+                    "Planting: Jasmine can be planted from seeds, cuttings, or nursery-bought plants. When planting, dig a hole slightly larger than the root ball, and backfill with soil, gently firming it around the plant. Space multiple jasmine plants about 6-8 feet apart to allow for proper growth.",
+                    "Watering: Jasmine requires regular watering, especially during the growing season. Keep the soil consistently moist but not waterlogged. Water the plants at the base to avoid wetting the foliage, which can lead to fungal issues.",
+                    "Mulching: Apply a layer of organic mulch around the base of the jasmine plant to retain soil moisture, suppress weeds, and regulate soil temperature. Keep the mulch away from the stem to prevent rot.",
+                    "Fertilization: Jasmine benefits from regular fertilization to encourage blooming and growth. Use a balanced, slow-release fertilizer or a liquid fertilizer formulated for flowering plants. Apply the fertilizer in spring and mid-summer following the manufacturer's instructions.",
+                    "Pruning: Prune jasmine regularly to maintain its shape, remove dead or diseased growth, and encourage new shoots. The best time to prune is after the flowering season. Be mindful of cutting off buds during pruning, as jasmine flowers on new growth.",
+                    "Support: Some jasmine varieties, such as Jasminum polyanthum (Pink Jasmine), are climbing plants that require support. Install trellises or stakes to help them climb and twine as they grow.",
+                    "Pest and Disease Control: Keep an eye out for common pests like aphids, whiteflies, and mealybugs. Use natural or organic insecticides if necessary. Proper watering and good airflow around the plant can help prevent fungal diseases.",
+                    "Winter Care: Depending on the variety and climate, jasmine may require protection during winter. In colder regions, consider growing jasmine in pots and bringing them indoors during the colder months. In milder climates, you can protect the plants from frost by covering them or providing temporary shelter.",
+                ]
+            },
+            turmeric: {
+                name: "Turmeric",
+                techniques: [
+                    "Selecting Turmeric Rhizomes: Purchase fresh and healthy turmeric rhizomes from a reliable source or a local nursery. Look for plump, firm rhizomes with well-developed buds (similar to ginger).",
+                    "Preparation of Rhizomes: Before planting, soak the turmeric rhizomes in water for 24 hours to encourage sprouting and promote better growth.",
+                    "Choose a Suitable Location: Turmeric thrives in warm and humid environments with indirect sunlight. Select a spot that receives partial shade, as direct sunlight can be too intense for the plant.",
+                    "Soil Preparation: Turmeric prefers well-draining, loamy soil with a slightly acidic to neutral pH (around 6.0 to 7.5). Loosen the soil to a depth of about 8 to 10 inches (20 to 25 cm) and amend it with compost or well-rotted manure to improve fertility.",
+                    "Planting Turmeric Rhizomes: Plant the turmeric rhizomes with the buds facing upwards, about 2 to 3 inches (5 to 7.5 cm) deep in the soil. Space them about 8 to 12 inches (20 to 30 cm) apart to allow sufficient room for growth.",
+                    "Watering: Keep the soil consistently moist but not waterlogged. Turmeric requires regular watering, especially during dry periods. Ensure that the soil doesn't dry out completely, as this can lead to stunted growth.",
+                    "Mulching: Apply a layer of organic mulch, such as straw or shredded leaves, around the turmeric plants. Mulching helps retain soil moisture, suppresses weeds, and maintains a stable soil temperature.",
+                    "Fertilization: Turmeric is a heavy feeder, and regular fertilization is essential for good growth. Use organic fertilizers high in potassium and phosphorus, and apply them every 4-6 weeks during the growing season (spring to fall).",
+                    "Weeding: Regularly remove weeds around the turmeric plants to prevent competition for nutrients and water.",
+                    "Pest and Disease Control: Turmeric is relatively resistant to pests and diseases, but occasional issues like rhizome rot and aphids may occur. Inspect the plants regularly and address any problems promptly.",
+                    "Harvesting: Turmeric takes around 8 to 10 months to mature. You can start harvesting turmeric once the leaves start turning yellow and withering. Gently dig up the rhizomes, being careful not to damage them.",
+                    "Regrowing Turmeric: Save some of the rhizomes from the harvest to replant for the next season's crop.",
+                ]
+            },
+            ginger: {
+                name: "Ginger",
+                techniques: [
+                    "Selecting Ginger Rhizomes: Purchase fresh ginger rhizomes from a reliable source or a local nursery. Look for plump, firm rhizomes with well-developed buds (also known as 'eyes').",
+                    "Preparation of Rhizomes: Before planting, soak the ginger rhizomes in water overnight. This helps to awaken dormant buds and promotes better growth.",
+                    "Choose a Suitable Location: Ginger thrives in warm, humid environments with indirect sunlight. Select a spot that receives partial shade, as direct sunlight can scorch the leaves and cause stress to the plant.",
+                    "Soil Preparation: Ginger prefers well-draining soil that is rich in organic matter. Loosen the soil to a depth of about 12 inches (30 cm) and mix in compost or well-rotted manure to improve fertility.",
+                    "Planting Ginger Rhizomes: Plant the ginger rhizomes with the buds facing upwards, about 1 to 2 inches (2.5 to 5 cm) deep in the soil. Space them about 8 to 12 inches (20 to 30 cm) apart to allow sufficient room for growth.",
+                    "Watering: Keep the soil consistently moist but not waterlogged. Ginger plants like a humid environment, so consider using a misting spray to increase humidity around the plants.",
+                    "Mulching: Apply a layer of organic mulch, such as straw or shredded leaves, around the ginger plants. Mulching helps retain soil moisture, suppresses weeds, and maintains a stable soil temperature.",
+                    "Fertilization: Feed the ginger plants with a balanced organic fertilizer every 4-6 weeks during the growing season. Avoid excessive use of nitrogen, as it can promote leafy growth at the expense of rhizome development.",
+                    "Weeding: Regularly remove weeds around the ginger plants to prevent competition for nutrients and water.",
+                    "Pest and Disease Control: Keep an eye out for common pests like aphids, mealybugs, and spider mites. Use natural or organic insecticides if necessary. Maintain good airflow and avoid overwatering to prevent fungal diseases.",
+                    "Harvesting: Ginger takes around 8 to 10 months to mature. You can start harvesting young ginger (also known as 'baby ginger') after about 3-4 months, but for full-sized rhizomes, wait until the plant's leaves begin to yellow and die back. Gently dig up the rhizomes, being careful not to damage them.",
+                    "Regrowing Ginger: Save some of the rhizomes from the harvest to replant for the next season's crop."
+                ]
+            }
+            // Add gardening techniques data for other plants similarly...
+        };
+
+        function proceed() {
+            const plantDropdown = document.getElementById('plantDropdown');
+            const selectedPlant = plantDropdown.value;
+
+            // Check if the selected plant exists in the gardening techniques data
+            if (selectedPlant in gardeningTechniquesData) {
+                // Pass the gardening techniques data and set the second argument to true
+                displayPlantInfo(gardeningTechniquesData[selectedPlant], true);
+            }
+        }
+        function displayPlantInfo(plant, isGardeningTechniques = false) {
+        const plantName = document.getElementById('plantName');
+        const plantInfoList = document.getElementById('gardeningTechniquesList');
+        // Clear previous info
+        plantInfoList.innerHTML = '';
+
+        // Set the plant name
+        if (isGardeningTechniques) {
+            console.log(plant.name);
+            plantName.innerHTML = `<strong>Gardening Techniques for ${plant.name} plant:</strong></br>
+            <div style="text-align: center;"> <!-- Center the image -->
+                    <img src="/plant-img/${plant.name}.jpg" alt="Image" style="height: 170px;">
+            </div>`;
+        }
+
+        // Add gardening techniques
+        plant.techniques.forEach(technique => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<span><strong>${technique.split(':')[0]}:</strong></span> ${technique.split(':')[1]}</br></br>`;
+            plantInfoList.appendChild(listItem);
+        });
+
+        // Show the info card
+        document.getElementById('gardeningTechniquesCard').style.display = 'none';
+        document.getElementById('gardeningTechniquesInfoCard').style.display = 'block';
+        }
+
+        function goBack() {
+        document.getElementById('gardeningTechniquesInfoCard').style.display = 'none';
+        document.getElementById('gardeningTechniquesCard').style.display = 'block';
+        }
+</script>
+</body>
+
+</html>
