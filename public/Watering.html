@@ -15,10 +15,11 @@
             
             <div class="card-body">
                 <h2 class="card-title text-center">Plant Selection</h2>
-                <form action="/" method="post">
+                <form action="/output" method="post">
+                    <input type="hidden" id="selectedPlant" name="selectedPlant">
                     <div class="form-group">
                         <label for="plantDropdown">Select a Plant:</label>
-                        <select class="form-control" id="plantDropdown">
+                        <select class="form-control" id="plantDropdown" name="plantDropdown">
                             <option value="tulasi">Tulasi</option>
                             <option value="aloe vera">Aloe vera</option>
                             <option value="hibiscus">Hibiscus</option>
@@ -101,7 +102,7 @@
             } else if (selectedOption === 'city') {
                 cityValue = document.getElementById('cityInput').value;
             }
-    
+            
             // Add your logic here to do something with the selected plant and location
             // For example, you can display a message or perform some action based on the inputs.
             console.log("Selected Plant: ", selectedPlant);

@@ -1,0 +1,315 @@
+<!-- output.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plant Care Information</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Internal CSS Styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .container {
+            padding-top: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+            margin: 10px 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            border-color: #ff6600;
+            margin: 10px;
+        }
+        
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #f2f2f2;">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card mx-auto" style="max-width: 500px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Plant Care Information</h2>
+                <% if (selectedPlant === 'tulasi') { %>
+                <!-- Watering techniques and water amount for Tulasi -->
+                <div class="mt-6">
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1.5).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 2-3 days, keeping the soil evenly moist. Avoid
+                            overwatering.</li>
+                        <li><strong>Outdoor:</strong> Water every 3-4 days, providing deep watering sessions to encourage
+                            root growth.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 2 to 3 days or when the top 1 inch (2.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every day or every other day, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 1 to 2 liters of water.</li>
+                    </ul>
+
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 3 to 4 days or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 2 to 3 inches (5 to 7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>
+                </div>
+                <% } else if (selectedPlant === 'aloe vera') { %>
+                <!-- Watering techniques and water amount for Aloe vera -->
+                <div class="mt-4">
+                    
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 2-3 weeks, allowing the soil to dry out between
+                            waterings.</li>
+                        <li><strong>Outdoor:</strong> Water every 3-4 weeks, providing deep watering sessions to promote
+                            healthy root development.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 2 to 3 weeks or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every week or every other week, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 1 to 2 liters of water.</li>
+                    </ul>
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 3 to 4 weeks or when the top 3 inches (7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 3 to 4 inches (7.5 to 10 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>
+                </div>
+                <% } else if (selectedPlant === 'hibiscus') { %>
+                <!-- Watering techniques and water amount for Hibiscus -->
+                <div class="mt-4">
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1.5).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 3-4 days, keeping the soil evenly moist. Avoid
+                            overwatering.</li>
+                        <li><strong>Outdoor:</strong> Water every 4-5 days, providing deep watering sessions to promote
+                            flower production.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 3 to 4 days or when the top 1 inch (2.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every other day or every 2 days, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 2 to 3 liters of water.</li>
+                    </ul>
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 4 to 5 days or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul>
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 2 to 3 inches (5 to 7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>
+                </div>
+                <% } else if (selectedPlant === 'jasmine') { %>
+                <!-- Watering techniques and water amount for Jasmine -->
+                <div class="mt-4">
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 4-5 days, allowing the soil to dry out slightly between
+                            waterings.</li>
+                        <li><strong>Outdoor:</strong> Water every 5-6 days, providing deep watering sessions during
+                            flowering season.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 2 to 4 days or when the top 1 to 2 inches (2.5 to 5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every other day or every 2 days, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 2 to 3 liters of water.</li>
+                    </ul>
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 5 to 6 days or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul>
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 2 to 3 inches (5 to 7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 0.5 to 1 liter of water.</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>
+                </div>
+                <% } else if (selectedPlant === 'turmeric') { %>
+                <!-- Watering techniques and water amount for Turmeric -->
+                <div class="mt-4">
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 3-4 days, keeping the soil evenly moist. Avoid
+                            overwatering.</li>
+                        <li><strong>Outdoor:</strong> Water every 4-5 days, providing deep watering sessions to promote
+                            rhizome growth.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 3 to 4 days or when the top 1 inch to 2 inch(2.5 cm to 5cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every other day or every 2 days, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 2 to 3 liters of water.</li>
+                    </ul>
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 5 to 6 days or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul>
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 2 to 3 inches (5 to 7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>
+                </div>
+                <% } else if (selectedPlant === 'ginger') { %>
+                <!-- Watering techniques and water amount for Ginger -->
+                <div class="mt-4">
+                    <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
+                    <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <h4>Watering Techniques:</h4>
+                    <ul>
+                        <li><strong>Indoor:</strong> Water every 3-4 days, allowing the soil to dry out slightly between
+                            waterings.</li>
+                        <li><strong>Outdoor:</strong> Water every 4-5 days, providing deep watering sessions to promote
+                            rhizome growth.</li>
+                    </ul>
+                    <h4>Active Growing Season (Spring and Summer):</h4>
+                    <ul>
+                        <li>Water every 3 to 4 days or when the top 1 inch (2.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water, depending on the pot size and soil capacity.</li>
+                    </ul>
+                    <h4>Hot and Dry Climate:</h4>
+                    <ul>
+                        <li>Water more frequently, potentially every other day or every 2 days, depending on how quickly the soil dries out.</li>
+                        <li>Each watering may require approximately 2 to 3 liters of water.</li>
+                    </ul>
+                    <h4>Cool and Humid Climate:</h4>
+                    <ul>
+                        <li>Water less frequently, potentially every 5 to 6 days or when the top 2 inches (5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul>
+                    <h4>Dormant Season (Winter):</h4>
+                    <ul>
+                        <li>Reduce watering during the dormant season to avoid overwatering. Water when the top 2 to 3 inches (5 to 7.5 cm) of the soil feels dry.</li>
+                        <li>Each watering may require approximately 1 to 2 liter of water.</li>
+                    </ul> 
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary btn-orange" href="/watering.html">Back</a>
+                    </div>       
+                </div>
+                <% } else { %>
+                <!-- No watering techniques available for the selected plant -->
+                <div class="mt-4">
+                    <p class="text-center">Sorry, watering techniques for this plant are not available.</p>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
