@@ -62,9 +62,9 @@
     </style>
 </head>
 
-<body style="margin: 0; padding: 0; background-color: #f2f2f2;">
+<body style="margin: 0; padding: 0; background-image: url('/img/garden.webp'); background-size: cover; background-position: center;display: flex; justify-content: center; align-items: center; min-height: 100vh;">
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!-- <div class="container d-flex justify-content-center align-items-center min-vh-100"> -->
         <div class="card mx-auto" style="max-width: 500px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 
             <div class="card-body">
@@ -74,8 +74,9 @@
                 <div class="mt-6">
                     <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2 - averageRain).toFixed(2), 0) %> litres</p>
-                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1.5).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 2-3 days, keeping the soil evenly moist. Avoid
@@ -116,8 +117,9 @@
                     
                     <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain).toFixed(2), 0) %> litres</p>
-                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 2-3 weeks, allowing the soil to dry out between
@@ -154,8 +156,9 @@
                 <div class="mt-4">
                     <h4>Water Amount for <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>:</h4>
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
-                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/5).toFixed(2), 0) %> litres</p>
+                    <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((1.5).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 3-4 days, keeping the soil evenly moist. Avoid
@@ -194,6 +197,7 @@
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 4-5 days, allowing the soil to dry out slightly between
@@ -232,6 +236,7 @@
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 3-4 days, keeping the soil evenly moist. Avoid
@@ -270,6 +275,7 @@
                     <p>Grounded <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((2.5 - averageRain).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>: <%= Math.max((1.5 - averageRain/2).toFixed(2), 0) %> litres</p>
                     <p>Potted <%= selectedPlant.charAt(0).toUpperCase() + selectedPlant.slice(1) %>(Not rain affected): <%= Math.max((0.75).toFixed(2), 0) %> litres</p>
+                    <p>average expected rain for next 3 days:<%=Math.max(averageRain/2).toFixed(3) %> litres per square feet</p>
                     <h4>Watering Techniques:</h4>
                     <ul>
                         <li><strong>Indoor:</strong> Water every 3-4 days, allowing the soil to dry out slightly between
@@ -309,7 +315,7 @@
                 <% } %>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </body>
 </html>
 
